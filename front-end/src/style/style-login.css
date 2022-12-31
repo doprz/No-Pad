@@ -1,0 +1,272 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+html, #root {
+	width: 100%;
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  
+  /* Default Font */
+  font-family: Arial, Helvetica, sans-serif;
+
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+
+  overflow-x: hidden;
+
+  background-image: url('../img/LogInScreen-background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  /* background-image: linear-gradient(rgb(30, 52, 88), rgb(30, 32, 37)); */
+}
+
+/****************************************
+                Utilities
+****************************************/
+
+/* Buttons
+==================== */
+button {
+  outline: none !important;
+}
+
+/* form input
+==================== */
+input {
+  outline: none !important;
+}
+
+/****************************************
+                Content
+****************************************/
+
+#login-container {
+  min-width: 400px;
+  min-height: 500px;
+  display: flex;
+
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  -moz-backdrop-filter: blur(4px);
+  -o-backdrop-filter: blur(4px);
+  -ms-backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.212);
+}
+
+#login-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  margin: 40px;
+}
+#login-form h2 {
+  font-size: 2em;
+  color: white;
+  margin: 0 0 10px 0;
+}
+#login-form h4 {
+  font-size: 1em;
+  color: rgb(230, 230, 230);
+
+  margin-bottom: 20px;
+}
+
+.form-section {
+  width: 100%;
+  /* height: 50px; */
+
+  box-sizing: border-box;
+
+  margin: 10px 0;
+}
+.input-field {
+  width: 100%;
+  height: 50px;
+
+  box-sizing: border-box;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  transition: all 0.25s;
+}
+.input-field:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+#login-form h5 {
+  font-size: 0.8em;
+  color: rgb(230, 230, 230);
+
+  margin: 5px 0;
+}
+#login-form #createAccount-text {
+  color: rgb(240, 240, 240);
+}
+#login-form #createAccount-text > span a {
+  color: rgb(240, 240, 240);
+  text-decoration: none;
+}
+#login-form #createAccount-text > span:hover a {
+  color: rgb(255, 255, 255);
+}
+
+#login-form #signin {
+  width: 30%;
+  height: 40px;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  margin: 30px 0;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 1em;
+
+  transition: all 0.25s;
+}
+#login-form #signin:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+form {
+  width: 100%;
+  height: 100%;
+  display: flex !important;
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+}
+
+label {
+  font-size: 0.8em;
+  color: rgb(230, 230, 230);
+
+  padding: 10px 0 !important;
+}
+
+input, textarea {
+  width: 100%;
+  height: 40px;
+
+  font-size: 1em;
+  padding: 0 20px;
+  color: rgb(230, 230, 230);
+  border: none !important;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  transition: all 0.25s;
+  box-sizing: border-box;
+}
+input:focus, textarea:focus {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Form Buttons */
+.button_form {
+  width: 30%;
+  height: 40px;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  margin: 30px 0;
+  border: none !important;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgb(230, 230, 230);
+  font-size: 1em;
+
+  transition: all 0.25s;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.button_form:not(.disabled):hover{
+  background-color: rgb(230, 230, 230);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.button_form.disabled {
+  color: rgb(117, 117, 117);
+  cursor: default;
+}
+
+/****************************************
+            CSS Media Queries
+****************************************/
+
+/* Mobile Devices */
+@media (max-width: 700px) {
+  #login-container {
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+  
+    border-radius: 0px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    -moz-backdrop-filter: blur(4px);
+    -o-backdrop-filter: blur(4px);
+    -ms-backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.212);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}
+
+.login-error-mess {
+  color: rgb(228, 13, 49);
+  margin: 5px 0 0 5px;
+  width: 45%;
+  padding: 2px 0;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.6);
+  text-align: center;
+  user-select: none;
+  animation: fadeIn 0.25s ease;
+}

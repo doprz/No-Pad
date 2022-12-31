@@ -1,0 +1,475 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+html, body, #root {
+	width: 100%;
+  height: 100%;
+}
+
+body .App {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  
+  /* Default Font */
+  font-family: Arial, Helvetica, sans-serif;
+
+  box-sizing: border-box;
+
+  overflow-x: hidden;
+
+  background-image: linear-gradient(rgb(30, 47, 75), rgb(30, 32, 37));
+}
+
+/****************************************
+                Utilities
+****************************************/
+
+/* Buttons
+==================== */
+button {
+  outline: none !important;
+}
+
+/* TextAreas
+==================== */
+textarea {
+  outline: none !important;
+}
+
+/* Font Awesome Customization
+==================== */
+.fa-ul {
+  list-style-type: none;
+  margin-left: 1.5em;
+  padding-left: 0;
+}
+.fa-li {
+  left: -1em;
+  position: absolute;
+  text-align: center;
+  width: 1em;
+  line-height: inherit;
+}
+
+/* Navigation
+==================== */
+.sidenav {
+  width: 250px;
+  height: 100%;
+  display: flex;
+
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+
+  flex-direction: column;
+  font-family: 'Open Sans', sans-serif;
+  /* background-color: rgba(0, 0, 0, 1); */
+  background-color: rgb(25, 25, 25);
+  box-sizing: border-box;
+
+  transition: width 0.5s;
+}
+
+/* User
+==================== */
+.user {
+  width: 100%;
+  height: 75px;
+  display: flex;
+
+  padding: 10px;
+  box-sizing: border-box;
+
+  /* background-color: rgba(65, 70, 70, 0.5); */
+}
+.user > img {
+  display: block;
+  max-width: 3em;
+  max-height: 3em;
+  height: auto;
+  width: auto;
+
+  align-self: center;
+
+  margin: 0 10px;
+  border-radius: 50%;
+}
+.user-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.user-text span {
+  display: block;
+}
+.user-text #name {
+  color: rgb(220, 220, 220);
+  font-size: 1em;
+}
+.user-text #email {
+  color: rgb(180, 180, 180);
+  font-size: 0.8em;
+  padding: 5px 0;
+}
+
+/* Quick Access
+==================== */
+.QuickAccess {
+  width: 100%;
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  padding: 10px 0;
+}
+#NewNote {
+  color: rgb(220, 220, 220);
+  font-size: 1em;
+  padding: 5px 0px;
+}
+#NewNoteIcon {
+  color: rgb(23, 212, 23);
+  font-size: 1.4em;
+}
+#NewNote:hover {
+  background-color: rgb(64, 64, 64);
+}
+
+.QuickAccess_list li {
+  color: rgb(220, 220, 220);
+  font-size: 1em;
+  padding: 5px 0;
+}
+.QuickAccess_list li:hover {
+  background-color: rgb(64, 64, 64);
+  color: white;
+}
+/* .QuickAccess_list i {
+  color: rgb(220, 220, 220);
+  padding: 0 10px 0 0;
+  font-size: 0.9em;
+} */
+.sidenav-icon {
+  color: rgb(220, 220, 220);
+  padding: 0 10px 0 10px;
+  font-size: 0.9em;
+}
+
+/* Quick Access
+==================== */
+.modal {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  /* padding: 200px 20%; */
+  box-sizing: border-box;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+  /* width: 100%;
+  height: 100%; */
+  width: 600px;
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+
+  background-color: rgb(220, 220, 220);
+}
+.modal-content h1 {
+  color: black;
+  font-size: 1.2em;
+}
+.modal-content label {
+  color: black;
+}
+.modal-content button {
+  color: white;
+}
+.modal-content #cancelNewNote {
+  margin: 0 !important;
+}
+.modal-content .button_form:not(.disabled):hover{
+  background-color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content .button_form.disabled {
+  color: rgb(180, 180, 180);
+  cursor: default;
+}
+
+/* Workspaces
+==================== */
+.Workspaces {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  padding: 10px 0;
+}
+.Workspaces h2 {
+  color: rgb(180, 180, 180);
+  font-size: 1em;
+  padding: 0 10px;
+}
+.Workspaces_list li {
+  color: rgb(220, 220, 220);
+  font-size: 1em;
+  padding: 5px 25px;
+}
+.Workspaces_list li:hover {
+  background-color: rgb(64, 64, 64);
+  color: white;
+}
+.Workspaces_list i {
+  color: rgb(220, 220, 220);
+  padding: 0 10px 0 5px;
+  font-size: 0.9em;
+}
+.Workspaces .fa-ul {
+  list-style-type: none;
+  margin-left: 0em;
+  padding-left: 0;
+}
+
+/* Misc
+==================== */
+.Misc {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  padding: 10px 0;
+}
+.Misc h2 {
+  color: rgb(180, 180, 180);
+  font-size: 1em;
+}
+.Misc_list li {
+  color: rgb(220, 220, 220);
+  font-size: 1em;
+  padding: 5px 0;
+}
+.Misc_list li:hover {
+  background-color: rgb(64, 64, 64);
+  color: white;
+}
+.Misc_list i {
+  color: rgb(220, 220, 220);
+  padding: 0 10px 0 5px;
+  font-size: 0.9em;
+}
+.Misc .fa-ul {
+  list-style-type: none;
+  margin-left: 0em;
+  padding-left: 0;
+}
+
+/****************************************
+                Content
+****************************************/
+
+/* grid-container
+==================== */
+.grid-container {
+  height: 100%;
+  width: 100%;
+  /* Same as the Sidenav */
+  margin-left: 250px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "Overview Note";
+  font-family: 'Open Sans', sans-serif;
+
+  transition: margin-left 0.5s;
+}
+
+/* Overview
+==================== */
+.Overview {
+  grid-area: Overview;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  background-color: rgb(38, 38, 38);
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.Overview .selected {
+  height: 75px;
+  display: flex;
+
+  align-items: center;
+  padding: 20px;
+
+  box-sizing: border-box;
+  border-bottom: 2px solid rgb(64, 64, 64); 
+}
+.Overview .selected h2 {
+  color: white;
+  font-size: 1.2em;
+}
+.Overview .selected .menu-icon {
+  display: none;
+  color: white;
+  padding-right: 10px;
+  font-size: 1.4em;
+}
+
+/* NoteObj
+==================== */
+.NoteObj-container {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  border-bottom: 2px solid rgb(64, 64, 64);
+  padding: 20px;
+
+  justify-content: space-evenly;
+  box-sizing: border-box;
+}
+.NoteObj-container:hover {
+  background-color: rgb(64, 64, 64);
+}
+.NoteObj {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-evenly;
+  box-sizing: border-box;
+}
+.NoteObj h2 {
+  color: white;
+  font-size: 1em;
+}
+.NoteObj h6 {
+  color: rgb(180, 180, 180);
+  font-size: 0.7em;
+}
+.NoteObj p {
+  width: 100%;
+  max-height: 45px;
+  overflow: hidden;
+
+
+  color: rgb(180, 180, 180);
+  font-size: 0.9em;
+
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+/* Note
+==================== */
+.NoteObjInfo {
+  display: flex;
+  position: absolute;
+  color: rgb(180, 180, 180);
+
+  right: 20px;
+  top: 20px;
+
+  padding: 5px;
+  box-sizing: border-box;
+}
+.NoteObjInfo .sidenav-icon:hover {
+  color: white;
+  cursor: default;
+}
+
+/* Note
+==================== */
+.Note {
+  grid-area: Note;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  background-color: rgb(51, 51, 51);
+  box-sizing: border-box;
+  padding: 40px 40px 0px 40px;
+}
+.Note h2 {
+  color: white;
+  font-size: 1.2em;
+}
+.Note textarea {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 5px;
+  margin: 10px 0 0 0;
+}
+
+
+
+
+
+/****************************************
+            CSS Media Queries
+****************************************/
+
+/* Mobile Devices */
+@media (max-width: 700px) {
+  .sidenav {
+    /* display: none; */
+    width: 0;
+  }
+
+  .Overview .selected .menu-icon {
+    display: block;
+  }
+
+  .grid-container {
+    margin-left: 0;
+  }
+
+}
