@@ -1,6 +1,7 @@
 import React from 'react';
 import Router from './Router'
 import { BrowserRouter } from "react-router-dom";
+import { AuthProvider } from './contexts/AuthContext';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { 
@@ -17,9 +18,13 @@ library.add(
 
 function App() {
   return (
-    <BrowserRouter>
-      <Router />
-    </BrowserRouter>
+
+    <AuthProvider>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </AuthProvider>
+
   );
 }
 

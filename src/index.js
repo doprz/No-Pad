@@ -5,6 +5,15 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// import { firebaseConfig } from './constants/firebase_config.js'
+
+// const firebase = require('firebase')
+// require('firebase/firestore')
+
+// // Initialize Firebase
+// firebase.initializeApp(firebaseConfig);
+// firebase.analytics();
+
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

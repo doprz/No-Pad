@@ -1,13 +1,28 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { NavLink, useHistory } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import defaultProfilePic from '../img/defaultProfilePicture.png'
-import { 
-  insertNewNoteForUser
-} from '../utils/localStorageUtils'
 
-const SideNav = ( { user, notes, fetchLatestNotes } ) => {
+const SideNav = ( { createNewNote, user, notes, fetchLatestNotes } ) => {
+
+  const { currentUser, logout } = useAuth()
+  const [error, setError] = useState('')
+  const history = useHistory()
 
   const [newNoteMenuOpen, setNewNoteMenuOpen] = useState(false)
+
+  const handleLogout = async () => {
+    setError('')
+
+    try {
+      await logout()
+      history.push("/")
+    } catch {
+      setError('Failed to log out')
+    }
+
+  }
 
   const openNewNoteMenu = () => {
     setNewNoteMenuOpen(true)
@@ -27,7 +42,7 @@ const SideNav = ( { user, notes, fetchLatestNotes } ) => {
   }
 
   useEffect(() => {
-    if(noteName === ""){
+    if(noteName === "") {
       setIsInputFilled(false)
     } else {
       setIsInputFilled(true)
@@ -36,9 +51,11 @@ const SideNav = ( { user, notes, fetchLatestNotes } ) => {
 
   const handleButtonClick = useCallback((e) => {
     e.preventDefault();
-    if(isInputFilled){
-      insertNewNoteForUser(user, noteName, "")
-      fetchLatestNotes()
+    if(isInputFilled) {
+      createNewNote(noteName)
+
+      // insertNewNoteForUser(user, noteName, "")
+      // fetchLatestNotes()
       closeNewNoteMenu()
     }
   }, [user, noteName, fetchLatestNotes, isInputFilled])
@@ -46,24 +63,14 @@ const SideNav = ( { user, notes, fetchLatestNotes } ) => {
   return(
     <aside className="sidenav">
       <div className="user">
-        <img src={defaultProfilePic} alt="Portrait of me" />
+        <img src={currentUser.photoURL ? currentUser.photoURL : defaultProfilePic} alt="User Profile Picture" />
         <div className="user-text">
-          <span id="name">{user.name}</span>
-          <span id="email">{user.email}</span>
+          <span id="name">{currentUser.displayName ? currentUser.displayName : currentUser.email}</span>
+          {/* <span id="email">{currentUser.email}</span> */}
         </div>
       </div>
 
       <div className="QuickAccess">
-        {/* <!-- <h2 id="AllNotes"><i className="fas fa-sticky-note"></i>All Notes</h2>
-        <h2 id="Important"><i className="fas fa-star"></i>Important</h2>
-        <h2 id="Folders"><i className="fas fa-folder"></i>Folders</h2> -->
-        <!-- <ul className="QuickAccess_list fa-ul">
-          <li><span className="fa-li"><i className="fas fa-sticky-note"></i></span>All Notes</li>
-          <li><span className="fa-li"><i className="fas fa-star"></i></span>Important</li>
-          <li><span className="fa-li"><i className="fas fa-folder"></i></span>Folders</li>
-          <li><span className="fa-li"><i className="far fa-square"></i></span>Shared with Me</li>
-        </ul> --> */}
-
         <h1 id="NewNote" onClick={openNewNoteMenu}><span><FontAwesomeIcon id="NewNoteIcon" icon={['fas', 'plus-square']} className="sidenav-icon"/>New Note</span></h1>
 
         <ul className="QuickAccess_list fa-ul">
@@ -113,6 +120,10 @@ const SideNav = ( { user, notes, fetchLatestNotes } ) => {
             </button>
           </form>
         </div>
+      </div>
+
+      <div id="logout">
+        <h5 onClick={handleLogout}>Log Out</h5>
       </div>
 
     </aside>

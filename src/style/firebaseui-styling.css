@@ -1,0 +1,26 @@
+.or {
+  display: flex;
+}
+.or hr {
+  width: 100%;
+  border: 1px solid rgb(240, 240, 240);
+}
+.or span {
+  margin: 0 10px;
+  color: white;
+}
+
+.firebaseui-card-content {
+  padding: 0 !important;
+}
+.firebaseui-idp-button {
+  direction: ltr;
+  font-weight: 500;
+  height: auto;
+  line-height: normal;
+  max-width: none !important;
+  min-height: 40px;
+  padding: 8px 16px;
+  text-align: left;
+  width: 100%;
+}

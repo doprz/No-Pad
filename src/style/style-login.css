@@ -1,8 +1,8 @@
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
+del, dfn, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
@@ -145,6 +145,17 @@ input {
   color: rgb(255, 255, 255);
 }
 
+#login-form #forgotPassword-text {
+  color: rgb(240, 240, 240);
+}
+#login-form #forgotPassword-text > span a {
+  color: rgb(240, 240, 240);
+  text-decoration: none;
+}
+#login-form #forgotPassword-text > span:hover a {
+  color: rgb(255, 255, 255);
+}
+
 #login-form #signin {
   width: 30%;
   height: 40px;
@@ -181,7 +192,7 @@ label {
   padding: 10px 0 !important;
 }
 
-input, textarea {
+.custom-login-input-UI, textarea {
   width: 100%;
   height: 40px;
 
@@ -195,7 +206,7 @@ input, textarea {
   transition: all 0.25s;
   box-sizing: border-box;
 }
-input:focus, textarea:focus {
+.custom-login-input-UI:focus, textarea:focus {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
@@ -259,9 +270,9 @@ input:focus, textarea:focus {
   }
 }
 
-.login-error-mess {
+.auth-error-mess {
   color: rgb(228, 13, 49);
-  margin: 5px 0 0 5px;
+  margin: 5px 0;
   width: 45%;
   padding: 2px 0;
   border-radius: 10px;

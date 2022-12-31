@@ -1,8 +1,8 @@
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
+del, dfn, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
@@ -18,6 +18,14 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
 }
+
+/* strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+} */
 
 html {
   width: 100%;
@@ -112,14 +120,14 @@ textarea {
 }
 .user > img {
   display: block;
-  max-width: 3em;
-  max-height: 3em;
+  max-width: 2.5em;
+  max-height: 2.5em;
   height: auto;
   width: auto;
 
   align-self: center;
 
-  margin: 0 10px;
+  margin: 0 10px 0 0;
   border-radius: 50%;
 }
 .user-text {
@@ -211,14 +219,39 @@ textarea {
   border-radius: 10px;
   box-sizing: border-box;
 
-  background-color: rgb(220, 220, 220);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  -moz-backdrop-filter: blur(4px);
+  -o-backdrop-filter: blur(4px);
+  -ms-backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.212);
+
+  /* background-color: rgb(220, 220, 220); */
 }
 .modal-content h1 {
-  color: black;
+  /* color: black; */
+  color: white;
   font-size: 1.2em;
 }
 .modal-content label {
-  color: black;
+  /* color: black; */
+  color: rgb(220, 220, 220);
+}
+#noteName {
+  width: 100%;
+  height: 40px;
+
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: none !important;
+  font-size: 1em;
+  padding: 0 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+
+  transition: all 0.25s;
+}
+#noteName:focus {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 .modal-content button {
   color: white;
@@ -303,6 +336,31 @@ textarea {
   list-style-type: none;
   margin-left: 0em;
   padding-left: 0;
+}
+
+/* Misc
+==================== */
+#logout {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  box-sizing: border-box;
+
+  padding: 10px;
+  margin-top: auto;
+
+  font-size: 1em;
+  color: rgb(220, 220, 220);
+}
+#logout:hover {
+  background-color: rgb(64, 64, 64);
+}
+#logout h5 {
+  width: 100%;
+  /* text-decoration: none; */
+}
+#logout h5:hover {
+  cursor: pointer;
 }
 
 /****************************************
@@ -435,7 +493,7 @@ textarea {
 
   background-color: rgb(51, 51, 51);
   box-sizing: border-box;
-  padding: 40px 40px 0px 40px;
+  padding: 20px;
 }
 .Note h2 {
   color: white;
@@ -447,6 +505,23 @@ textarea {
   background-color: rgba(0, 0, 0, 0.4);
   padding: 5px;
   margin: 10px 0 0 0;
+}
+
+/* Quill
+==================== */
+.noteEditorContainer {
+  grid-area: Note;
+  width: 100%;
+  height: 100%;
+
+  /* background-color: rgb(51, 51, 51); */
+  background-color: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.quill {
+  height: 90%;
+  box-sizing: border-box;
 }
 
 
